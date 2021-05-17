@@ -42,7 +42,7 @@
 ;; regex.
 (setq org-agenda-file-regexp
       "\\`\\\([^.].*\\.org\\\|[0-9]\\\{8\\\}\\\(\\.gpg\\\)?\\\)\\'")
-(add-to-list 'org-agenda-files org-journal-dir)
+;; (add-to-list 'org-agenda-files org-journal-dir)
 
 (add-to-list 'org-agenda-custom-commands '("N" "Agenda and Prioritized TODOs"
                                            ((agenda #1="")
@@ -53,17 +53,18 @@
 
 ;; Setup org-capture templates
 (setq org-capture-templates
-      '(("e" "Events"      entry (file+headline "~/org/todo/agenda.org" "Events"     ) "* TODO %?")
-        ("m" "Comm/Plan"   entry (file+headline "~/org/todo/agenda.org" "Comm/Plan"  ) "* TODO %?")
-        ("s" "SIG"         entry (file+headline "~/org/todo/agenda.org" "SIG"        ) "* TODO %?")
-        ("p" "Pyregence"   entry (file+headline "~/org/todo/agenda.org" "Pyregence"  ) "* TODO %?")
-        ("g" "GridFire"    entry (file+headline "~/org/todo/agenda.org" "GridFire"   ) "* TODO %?")
-        ("G" "GridFire-UI" entry (file+headline "~/org/todo/agenda.org" "GridFire-UI") "* TODO %?")
+      '(("e" "Events"      entry (file+headline "~/org/todo/agenda.org" "Events"     ) "* TODO Events: %?")
+        ("m" "Comm/Plan"   entry (file+headline "~/org/todo/agenda.org" "Comm/Plan"  ) "* TODO Comm/Plan: %?")
+        ("s" "SIG"         entry (file+headline "~/org/todo/agenda.org" "SIG"        ) "* TODO SIG: %?")
+        ("p" "Pyregence"   entry (file+headline "~/org/todo/agenda.org" "Pyregence"  ) "* TODO Pyregence: %?")
+        ("g" "GridFire"    entry (file+headline "~/org/todo/agenda.org" "GridFire"   ) "* TODO GridFire: %?")
+        ("d" "DevDocs"     entry (file+headline "~/org/todo/agenda.org" "DevDocs"    ) "* TODO DevDocs: %?")
+        ("G" "GridFire-UI" entry (file+headline "~/org/todo/agenda.org" "GridFire-UI") "* TODO GridFire-UI: %?")
         ("E" "Emacs"       entry (file+headline "~/org/tech-journal.org" "Emacs/Spacemacs") "* %?")
-        ("A" "Sysadmin"    entry (file+headline "~/org/todo/agenda.org" "Sysadmin"   ) "* TODO %?")
+        ("A" "Sysadmin"    entry (file+headline "~/org/todo/agenda.org" "Sysadmin"   ) "* TODO Sysadmin: %?")
         ("j" "Journal entry" plain (function org-journal-find-location)
          "** %(format-time-string org-journal-time-format)%^{Title}\n%i%?" :jump-to-captured t :immediate-finish t)
-        ("M" "Misc"        entry (file+headline "~/org/todo/agenda.org" "Misc"       ) "* TODO %?")))
+        ("M" "Misc"        entry (file+headline "~/org/todo/agenda.org" "Misc"       ) "* TODO Misc: %?")))
 
 ;; ("j" "Clojure"     entry (file+headline "~/org/todo/agenda.org" "Clojure"    ) "* TODO %?")
 
