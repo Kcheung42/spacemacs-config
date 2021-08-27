@@ -58,6 +58,7 @@
         ("s" "SIG"         entry (file+headline "~/org/todo/agenda.org" "SIG"        ) "* TODO SIG: %?")
         ("p" "Pyregence"   entry (file+headline "~/org/todo/agenda.org" "Pyregence"  ) "* TODO Pyregence: %?")
         ("g" "GridFire"    entry (file+headline "~/org/todo/agenda.org" "GridFire"   ) "* TODO GridFire: %?")
+        ("y" "GeoSync"     entry (file+headline "~/org/todo/agenda.org" "GeoSync"    ) "* TODO Geosync: %?")
         ("d" "DevDocs"     entry (file+headline "~/org/todo/agenda.org" "DevDocs"    ) "* TODO DevDocs: %?")
         ("G" "GridFire-UI" entry (file+headline "~/org/todo/agenda.org" "GridFire-UI") "* TODO GridFire-UI: %?")
         ("E" "Emacs"       entry (file+headline "~/org/tech-journal.org" "Emacs/Spacemacs") "* %?")
@@ -135,7 +136,7 @@
 (setq org-latex-listings 'minted)
 (setq org-latex-minted-options '(("linenos"         "false")
                                  ("frame"           "single")
-                                 ("fontsize"        "\\footnotesize")
+                                 ("fontsize"        "\\scriptsize")
                                  ("baselinestretch" "1.0")))
 (setq org-latex-pdf-process '("pdflatex -shell-escape -interaction nonstopmode -output-directory %o %f"
                               "bibtex %b"
@@ -160,7 +161,12 @@
                            ("\\chapter{%s}"       . "\\chapter*{%s}")
                            ("\\section{%s}"       . "\\section*{%s}")
                            ("\\subsection{%s}"    . "\\subsection*{%s}")
-                           ("\\subsubsection{%s}" . "\\subsubsection*{%s}"))))
+                           ("\\subsubsection{%s}" . "\\subsubsection*{%s}"))
+                          ("beamer"
+                           "\\documentclass\[presentation\]\{beamer\}"
+                           ("\\section\{%s\}" . "\\section*\{%s\}")
+                           ("\\subsection\{%s\}" . "\\subsection*\{%s\}")
+                           ("\\subsubsection\{%s\}" . "\\subsubsection*\{%s\}"))))
 
 ;; Turn off inclusion of the hypersetup{} section in LaTeX export
 (setq org-latex-with-hyperref nil)
@@ -289,4 +295,17 @@
 (setq org-link-frame-setup '((file . find-file)))
 
 (provide 'packages)
+
+;; Add strike through when checkboxes are checked
+(defface org-checkbox-done-text
+  '((t (:foreground "#71696A" :strike-through t)))
+  "Face for the text part of a checked org-mode checkbox.")
+
+;; Add strike through when checkboxes are checked
+(font-lock-add-keywords
+ 'org-mode
+ `(("^[ \t]*\\(?:[-+*]\\|[0-9]+[).]\\)[ \t]+\\(\\(?:\\[@\\(?:start:\\)?[0-9]+\\][ \t]*\\)?\\[\\(?:X\\|\\([0-9]+\\)/\\2\\)\\][^\n]*\n\\)"
+    1 'org-checkbox-done-text prepend))
+ 'append)
+
 ;;; packages.el ends here

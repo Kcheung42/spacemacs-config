@@ -15,20 +15,22 @@
 (defconst org-roam-packages
   '(org-roam))
 
-(use-package org-roam-server
-  :ensure t
-  :config
-  (setq org-roam-server-host "127.0.0.1"
-        org-roam-server-port 4242
-        org-roam-server-authenticate nil
-        org-roam-server-export-inline-images t
-        org-roam-server-serve-files nil
-        org-roam-server-served-file-extensions '("pdf" "mp4" "ogv")
-        org-roam-server-network-poll t
-        org-roam-server-network-arrows nil
-        org-roam-server-network-label-truncate t
-        org-roam-server-network-label-truncate-length 60
-        org-roam-server-network-label-wrap-length 20))
+;; (use-package org-roam-server
+;;   :ensure t
+;;   :config
+;;   (setq org-roam-server-host "127.0.0.1"
+;;         org-roam-server-port 4242
+;;         org-roam-server-authenticate nil
+;;         org-roam-server-export-inline-images t
+;;         org-roam-server-serve-files nil
+;;         org-roam-server-served-file-extensions '("pdf" "mp4" "ogv")
+;;         org-roam-server-network-poll t
+;;         org-roam-server-network-arrows nil
+;;         org-roam-server-network-label-truncate t
+;;         org-roam-server-network-label-truncate-length 60
+;;         org-roam-server-network-label-wrap-length 20))
+
+(setq org-roam-v2-ack t)
 
 (use-package org-roam
   :ensure t
@@ -44,17 +46,17 @@
       "art" 'org-roam-dailies-today
       "arm" 'org-roam-dailies-tomorrow
       "ary" 'org-roam-dailies-yesterday
-      "arf" 'org-roam-find-file
+      "arf" 'org-roam-node-find
       "arg" 'org-roam-graph)
 
     (spacemacs/declare-prefix-for-mode 'org-mode "mr" "org-roam")
     (spacemacs/set-leader-keys-for-major-mode 'org-mode
       "rl" 'org-roam
       "rb" 'org-roam-switch-to-buffer
-      "rf" 'org-roam-find-file
+      "rf" 'org-roam-node-find
       "ry" 'org-roam-dailies-yesterday
       "rm" 'org-roam-dailies-tomorrow
       "rt" 'org-roam-dailies-today
-      "ri" 'org-roam-insert
+      "ri" 'org-roam-node-insert
       "rg" 'org-roam-graph)))
 ;;; packages.el ends here.
