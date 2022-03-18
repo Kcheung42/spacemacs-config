@@ -111,9 +111,7 @@ values."
      aggressive-indent
      org-journal
      forge
-     org-preview-html
-     org-roam-server
-     )
+     org-preview-html)
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
    ;; A list of packages that will not be installed and loaded.
@@ -400,7 +398,24 @@ you should place your code here."
   (require 'vterm)
   (setq-default fill-column 70)
   (server-start)
+
+  ;;============================================================================
+  ;;
+  ;; Tramp
+  ;;
+  ;;============================================================================
+
+  (setq remote-file-name-inhibit-cache nil)
+  (setq vc-ignore-dir-regexp
+        (format "%s\\|%s"
+                vc-ignore-dir-regexp
+                tramp-file-name-regexp))
+  (setq tramp-verbose 1)
+
   (setq tramp-copy-size-limit 100000)
+
+  ;; tramp was really slow. This should fix it
+  (setq projectile-mode-line "Projectile")
 
   ;;============================================================================
   ;;

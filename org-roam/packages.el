@@ -34,29 +34,45 @@
 
 (use-package org-roam
   :ensure t
-  :hook
-  (after-init . org-roam-mode)
   :custom
-  (org-roam-directory "~/org/org-roam")
-  :init
-  (progn
-    (spacemacs/declare-prefix "ar" "org-roam")
-    (spacemacs/set-leader-keys
-      "arl" 'org-roam
-      "art" 'org-roam-dailies-today
-      "arm" 'org-roam-dailies-tomorrow
-      "ary" 'org-roam-dailies-yesterday
-      "arf" 'org-roam-node-find
-      "arg" 'org-roam-graph)
+  (org-roam-directory (file-truename "~/org/org-roam"))
+  :bind (("C-c n l" . org-roam-buffer-toggle)
+         ("C-c n f" . org-roam-node-find)
+         ("C-c n g" . org-roam-graph)
+         ("C-c n i" . org-roam-node-insert)
+         ("C-c n c" . org-roam-capture)
+         ;; Dailies
+         ("C-c n j" . org-roam-dailies-capture-today))
+  :config
+  (org-roam-db-autosync-mode)
+  ;; If using org-roam-protocol
+  (require 'org-roam-protocol))
 
-    (spacemacs/declare-prefix-for-mode 'org-mode "mr" "org-roam")
-    (spacemacs/set-leader-keys-for-major-mode 'org-mode
-      "rl" 'org-roam
-      "rb" 'org-roam-switch-to-buffer
-      "rf" 'org-roam-node-find
-      "ry" 'org-roam-dailies-yesterday
-      "rm" 'org-roam-dailies-tomorrow
-      "rt" 'org-roam-dailies-today
-      "ri" 'org-roam-node-insert
-      "rg" 'org-roam-graph)))
+;; (use-package org-roam
+;;   :ensure t
+;;   :hook
+;;   (after-init . org-roam-mode)
+;;   :custom
+;;   (org-roam-directory "~/org/org-roam")
+;;   :init
+;;   (progn
+;;     (spacemacs/declare-prefix "ar" "org-roam")
+;;     (spacemacs/set-leader-keys
+;;       "arl" 'org-roam
+;;       "art" 'org-roam-dailies-today
+;;       "arm" 'org-roam-dailies-tomorrow
+;;       "ary" 'org-roam-dailies-yesterday
+;;       "arf" 'org-roam-node-find
+;;       "arg" 'org-roam-graph)
+
+;;     (spacemacs/declare-prefix-for-mode 'org-mode "mr" "org-roam")
+;;     (spacemacs/set-leader-keys-for-major-mode 'org-mode
+;;       "rl" 'org-roam
+;;       "rb" 'org-roam-switch-to-buffer
+;;       "rf" 'org-roam-node-find
+;;       "ry" 'org-roam-dailies-yesterday
+;;       "rm" 'org-roam-dailies-tomorrow
+;;       "rt" 'org-roam-dailies-today
+;;       "ri" 'org-roam-node-insert
+      ;; "rg" 'org-roam-graph)))
 ;;; packages.el ends here.
