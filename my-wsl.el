@@ -40,3 +40,5 @@
 (global-set-key
  (kbd "C-c C-v")
  'wsl-paste)
+
+(provide 'my-wsl)

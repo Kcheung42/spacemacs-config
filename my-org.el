@@ -6,9 +6,6 @@
 (add-to-list 'auto-mode-alist '("\\.\\(org\\|txt\\)$" . org-mode))
 (add-hook 'org-mode-hook 'turn-on-font-lock)
 
-;; Ensure that org files are opened in outline view
-(setq org-startup-folded 'content)
-
 ;; Setup some custom keybindings
 ;; (global-set-key "\C-cl" 'org-store-link)
 ;; (global-set-key "\C-cL" 'org-insert-link-global)
@@ -18,25 +15,28 @@
 ;; (global-set-key "\C-cb" 'org-iswitchb)
 
 ;; Customize variables
-(setq org-log-repeat nil
-      org-special-ctrl-a/e t
-      org-startup-indented nil
-      org-hide-leading-stars t
-      org-reverse-note-order nil
-      org-deadline-warning-days 14
-      org-fast-tag-selection-single-key nil ;; 'expert is another option (see help)
-      org-directory "~/org/todo/"
-      org-default-notes-file "~/org/todo/agenda.org"
+(setq org-adapt-indentation t
       org-agenda-files '("~/org/todo/agenda.org")
-      org-agenda-span 'day
+      org-agenda-scheduled-leaders '("" "")
       org-agenda-show-all-dates t
       org-agenda-skip-deadline-if-done t
       org-agenda-skip-scheduled-if-done t
+      org-agenda-span 'day
       org-agenda-start-on-weekday 0 ;; always start the week view on Sunday
       org-agenda-use-time-grid nil
-      org-agenda-scheduled-leaders '("" "")
+      org-deadline-warning-days 14
+      org-default-notes-file "~/org/todo/agenda.org"
+      org-directory "~/org/todo/"
       org-enforce-todo-checkbox-dependencies nil
-      org-hide-emphasis-markers t)
+      org-fast-tag-selection-single-key nil ;; 'expert is another option (see help)
+      org-hide-emphasis-markers t
+      org-hide-leading-stars t
+      org-reverse-note-order nil
+      org-special-ctrl-a/e t
+      org-startup-folded 'content
+      org-startup-indented nil ;;Ensure that org files are opened in outline view
+      org-startup-with-latex-preview t
+      org-log-repeat nil)
 
 ;; When =org-journal-file-pattern= has the default value, this would be the
 ;; regex.
@@ -288,8 +288,7 @@
 
 ;; Set bold foreground
 (add-to-list 'org-emphasis-alist
-             '("*" (bold :background "green" :foreground "black")
-               ))
+             '("*" (bold :background "green" :foreground "black")))
 
 ;; Set org links to open current window
 (setq org-link-frame-setup '((file . find-file)))
@@ -308,4 +307,4 @@
     1 'org-checkbox-done-text prepend))
  'append)
 
-;;; packages.el ends here
+(provide 'my-org)

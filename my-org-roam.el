@@ -75,4 +75,5 @@
 ;;       "rt" 'org-roam-dailies-today
 ;;       "ri" 'org-roam-node-insert
       ;; "rg" 'org-roam-graph)))
-;;; packages.el ends here.
+
+(provide 'my-org-roam)
