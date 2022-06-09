@@ -35,7 +35,7 @@
       org-special-ctrl-a/e t
       org-startup-folded 'content
       org-startup-indented nil ;;Ensure that org files are opened in outline view
-      org-startup-with-latex-preview t
+      ;; org-startup-with-latex-preview t
       org-log-repeat nil)
 
 ;; When =org-journal-file-pattern= has the default value, this would be the
@@ -53,7 +53,8 @@
 
 ;; Setup org-capture templates
 (setq org-capture-templates
-      '(("e" "Events"      entry (file+headline "~/org/todo/agenda.org" "Events"     ) "* TODO Events: %?")
+      '(("a" "AWE"         entry (file+headline "~/org/todo/agenda.org" "AWE"        ) "* TODO AWE: %?")
+        ("e" "Events"      entry (file+headline "~/org/todo/agenda.org" "Events"     ) "* TODO Events: %?")
         ("m" "Comm/Plan"   entry (file+headline "~/org/todo/agenda.org" "Comm/Plan"  ) "* TODO Comm/Plan: %?")
         ("s" "SIG"         entry (file+headline "~/org/todo/agenda.org" "SIG"        ) "* TODO SIG: %?")
         ("p" "Pyregence"   entry (file+headline "~/org/todo/agenda.org" "Pyregence"  ) "* TODO Pyregence: %?")
@@ -71,9 +72,10 @@
 
 
 ;; Define default TODO keywords and their faces
-(setq org-todo-keywords '((sequence  "TODO" "STARTED" "|" "DONE" "CANCELED"))
+(setq org-todo-keywords '((sequence  "TODO" "STARTED" "|" "STARTED" "REVIEW" "|" "DONE" "CANCELED"))
       org-todo-keyword-faces '(("TODO"     :foreground "red"          :weight bold)
                                ("STARTED"  :foreground "orange"       :weight bold)
+                               ("REVIEW"   :foreground "orange"       :weight bold)
                                ("DONE"     :foreground "forest green" :weight bold)
                                ("CANCELED" :foreground "black"        :weight bold)))
 

@@ -12,8 +12,8 @@
 
 ;; FOR packages.el
 ;;; Code:
-(defconst org-roam-packages
-  '(org-roam))
+;; (defconst org-roam-packages
+;;   '(org-roam))
 
 ;; (use-package org-roam-server
 ;;   :ensure t
@@ -30,12 +30,39 @@
 ;;         org-roam-server-network-label-truncate-length 60
 ;;         org-roam-server-network-label-wrap-length 20))
 
-(setq org-roam-v2-ack t)
+;; (setq org-roam-v2-ack t)
+
+;; (use-package org-roam
+;;   :ensure t
+;;   :custom
+;;   (org-roam-directory (file-truename "/home/kcheung/org/org-roam"))
+;;   :bind (("C-c n l" . org-roam-buffer-toggle)
+;;          ("C-c n f" . org-roam-node-find)
+;;          ("C-c n g" . org-roam-graph)
+;;          ("C-c n i" . org-roam-node-insert)
+;;          ("C-c n c" . org-roam-capture)
+;;          ;; Dailies
+;;          ("C-c n j" . org-roam-dailies-capture-today))
+;;   :config
+;;   (org-roam-db-autosync-mode)
+;;   ;; If using org-roam-protocol
+;; (require 'org-roam-protocol))
+
+(require 'package)
+(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
+(package-initialize)
+(package-refresh-contents)
+
+(unless (package-installed-p 'use-package)
+  (package-install 'use-package))
+
+(require 'use-package)
+(require 'org)
 
 (use-package org-roam
   :ensure t
   :custom
-  (org-roam-directory (file-truename "~/org/org-roam"))
+  (org-roam-directory (file-truename "/home/kcheung/org/org-roam"))
   :bind (("C-c n l" . org-roam-buffer-toggle)
          ("C-c n f" . org-roam-node-find)
          ("C-c n g" . org-roam-graph)
@@ -44,36 +71,11 @@
          ;; Dailies
          ("C-c n j" . org-roam-dailies-capture-today))
   :config
-  (org-roam-db-autosync-mode)
-  ;; If using org-roam-protocol
+  (setq org-roam-v2-ack t)
+  (setq org-roam-directory (expand-file-name user-emacs-directory))
+  (org-roam-setup)
   (require 'org-roam-protocol))
 
-;; (use-package org-roam
-;;   :ensure t
-;;   :hook
-;;   (after-init . org-roam-mode)
-;;   :custom
-;;   (org-roam-directory "~/org/org-roam")
-;;   :init
-;;   (progn
-;;     (spacemacs/declare-prefix "ar" "org-roam")
-;;     (spacemacs/set-leader-keys
-;;       "arl" 'org-roam
-;;       "art" 'org-roam-dailies-today
-;;       "arm" 'org-roam-dailies-tomorrow
-;;       "ary" 'org-roam-dailies-yesterday
-;;       "arf" 'org-roam-node-find
-;;       "arg" 'org-roam-graph)
-
-;;     (spacemacs/declare-prefix-for-mode 'org-mode "mr" "org-roam")
-;;     (spacemacs/set-leader-keys-for-major-mode 'org-mode
-;;       "rl" 'org-roam
-;;       "rb" 'org-roam-switch-to-buffer
-;;       "rf" 'org-roam-node-find
-;;       "ry" 'org-roam-dailies-yesterday
-;;       "rm" 'org-roam-dailies-tomorrow
-;;       "rt" 'org-roam-dailies-today
-;;       "ri" 'org-roam-node-insert
-      ;; "rg" 'org-roam-graph)))
+(use-package helm :ensure t :config (helm-mode))
 
 (provide 'my-org-roam)

@@ -47,6 +47,7 @@ values."
      (markdown :variables
                markdown-live-preview-engine 'vmd)
      (clojure :variables
+              clojure-enable-clj-refactor t
               clojure-enable-linters 'clj-kondo)
      (javascript :variables
                  node-add-modules-path t)
@@ -385,6 +386,19 @@ you should place your code here."
   (require 'my-python)
   (require 'my-tramp)
   (require 'my-wsl)
+
+  ;;============================================================================
+  ;;
+  ;; Experiment
+  ;;
+  ;;============================================================================
+
+  (defun vterm--rename-buffer-as-title (title)
+    (let ((dir (string-trim-left (concat (nth 1 (split-string title ":")) "/"))))
+      (cd-absolute dir)
+      (rename-buffer (format "term %s" title))))
+  (add-hook 'vterm-set-title-functions 'vterm--rename-buffer-as-title)
+
 
   ;;============================================================================
   ;;
