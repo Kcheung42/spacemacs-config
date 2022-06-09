@@ -72,7 +72,6 @@
          ("C-c n j" . org-roam-dailies-capture-today))
   :config
   (setq org-roam-v2-ack t)
-  (setq org-roam-directory (expand-file-name user-emacs-directory))
   (org-roam-setup)
   (require 'org-roam-protocol))
 
