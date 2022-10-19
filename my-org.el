@@ -15,7 +15,8 @@
 ;; (global-set-key "\C-cb" 'org-iswitchb)
 
 ;; Customize variables
-(setq org-adapt-indentation t
+(setq
+      ;; org-adapt-indentation t ;; always indent content
       org-agenda-files '("~/org/todo/agenda.org")
       org-agenda-scheduled-leaders '("" "")
       org-agenda-show-all-dates t
@@ -58,6 +59,7 @@
         ("m" "Comm/Plan"   entry (file+headline "~/org/todo/agenda.org" "Comm/Plan"  ) "* TODO Comm/Plan: %?")
         ("s" "SIG"         entry (file+headline "~/org/todo/agenda.org" "SIG"        ) "* TODO SIG: %?")
         ("p" "Pyregence"   entry (file+headline "~/org/todo/agenda.org" "Pyregence"  ) "* TODO Pyregence: %?")
+        ("P" "Peer Review" entry (file+headline "~/org/todo/agenda.org" "Peer Reviews" ) "* TODO PR: %?")
         ("g" "GridFire"    entry (file+headline "~/org/todo/agenda.org" "GridFire"   ) "* TODO GridFire: %?")
         ("y" "GeoSync"     entry (file+headline "~/org/todo/agenda.org" "GeoSync"    ) "* TODO Geosync: %?")
         ("d" "DevDocs"     entry (file+headline "~/org/todo/agenda.org" "DevDocs"    ) "* TODO DevDocs: %?")
@@ -72,7 +74,7 @@
 
 
 ;; Define default TODO keywords and their faces
-(setq org-todo-keywords '((sequence  "TODO" "STARTED" "|" "STARTED" "REVIEW" "|" "DONE" "CANCELED"))
+(setq org-todo-keywords '((sequence  "TODO" "STARTED" "REVIEW" "DONE" "CANCELED"))
       org-todo-keyword-faces '(("TODO"     :foreground "red"          :weight bold)
                                ("STARTED"  :foreground "orange"       :weight bold)
                                ("REVIEW"   :foreground "orange"       :weight bold)
@@ -96,8 +98,7 @@
      (sql        . t)
      (dot        . t)
      (gnuplot    . t)
-     (clojure    . t)
-     ))
+     (clojure    . t)))
   (setq org-src-window-setup         'current-window
         org-src-fontify-natively     t
         org-confirm-babel-evaluate   nil

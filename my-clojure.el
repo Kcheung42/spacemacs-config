@@ -14,5 +14,8 @@
       dotspacemacs-smart-closing-parenthesis t
       clojure-enable-clj-refactor            t)
 
+;; fix clojure stack traces
+(setq cider-clojure-cli-global-options "-J-XX:-OmitStackTraceInFastThrow")
+
 (provide 'my-clojure)
 ;;; my-clojure.el ends here
