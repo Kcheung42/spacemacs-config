@@ -38,7 +38,7 @@
          (words (split-string line))
          (pr-id (string-trim-left (first words) "#"))
          (pr-text (string-join (rest words) " "))
-         (entry (concat "* PR" pr-id " (" pr-text ")"))
+         (entry (concat "* TODO PR" pr-id " (" pr-text ")"))
          (repo (string-remove-prefix "magit: " (buffer-name)))
          (file (concat "~/sig/pull-requests/" repo ".org")))
     (find-file file)

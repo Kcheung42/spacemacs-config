@@ -74,10 +74,11 @@
 
 
 ;; Define default TODO keywords and their faces
-(setq org-todo-keywords '((sequence  "TODO" "STARTED" "REVIEW" "DONE" "CANCELED"))
+(setq org-todo-keywords '((sequence  "TODO" "STARTED" "REVIEW" "APPROVED" "DONE" "CANCELED"))
       org-todo-keyword-faces '(("TODO"     :foreground "red"          :weight bold)
                                ("STARTED"  :foreground "orange"       :weight bold)
                                ("REVIEW"   :foreground "orange"       :weight bold)
+                               ("APPROVED" :foreground "forest green" :weight bold)
                                ("DONE"     :foreground "forest green" :weight bold)
                                ("CANCELED" :foreground "black"        :weight bold)))
 
@@ -90,15 +91,21 @@
   (require 'ob-dot)
   (require 'ob-gnuplot)
   (require 'ob-clojure)
+  (require 'ob-python)
   (add-to-list 'org-structure-template-alist '("S" "#+name: ?\n#+begin_src \n\n#+end_src" "<src id=\"?\" lang=\"\">\n\n</src>"))
   (org-babel-do-load-languages
    'org-babel-load-languages
-   '((emacs-lisp . t)
-     (shell      . t)
-     (sql        . t)
+   '(
+     (clojure    . t)
      (dot        . t)
+     (emacs-lisp . t)
      (gnuplot    . t)
-     (clojure    . t)))
+     (mermaid    . t)
+     (python     . t)
+     (shell      . t)
+     (scheme     . t)
+     (sql        . t)
+     ))
   (setq org-src-window-setup         'current-window
         org-src-fontify-natively     t
         org-confirm-babel-evaluate   nil
@@ -309,5 +316,9 @@
  `(("^[ \t]*\\(?:[-+*]\\|[0-9]+[).]\\)[ \t]+\\(\\(?:\\[@\\(?:start:\\)?[0-9]+\\][ \t]*\\)?\\[\\(?:X\\|\\([0-9]+\\)/\\2\\)\\][^\n]*\n\\)"
     1 'org-checkbox-done-text prepend))
  'append)
+
+
+;; mermaid flow chart setup
+(setq ob-mermaid-cli-path "/home/kcheung/mermaid.cli/node_modules/.bin/mmdc")
 
 (provide 'my-org)

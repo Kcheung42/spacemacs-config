@@ -17,5 +17,24 @@
 ;; fix clojure stack traces
 (setq cider-clojure-cli-global-options "-J-XX:-OmitStackTraceInFastThrow")
 
+;; set indent style to
+;; (some-function
+;;   10
+;;   1
+;;   2)
+;; (some-function 10
+;;                1
+;;                2)
+;; (setq clojure-indent-style 'align-arguments)
+
+;; (some-function
+;;  10
+;;  1
+;;  2)
+;; (some-function 10
+;;                1
+;;                2)
+(setq clojure-indent-style 'always-align) ;Default
+
 (provide 'my-clojure)
 ;;; my-clojure.el ends here
