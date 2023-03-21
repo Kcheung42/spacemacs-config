@@ -54,21 +54,23 @@
 
 ;; Setup org-capture templates
 (setq org-capture-templates
-      '(("a" "AWE"         entry (file+headline "~/org/todo/agenda.org" "AWE"        ) "* TODO AWE: %?")
-        ("e" "Events"      entry (file+headline "~/org/todo/agenda.org" "Events"     ) "* TODO Events: %?")
-        ("m" "Comm/Plan"   entry (file+headline "~/org/todo/agenda.org" "Comm/Plan"  ) "* TODO Comm/Plan: %?")
-        ("s" "SIG"         entry (file+headline "~/org/todo/agenda.org" "SIG"        ) "* TODO SIG: %?")
-        ("p" "Pyregence"   entry (file+headline "~/org/todo/agenda.org" "Pyregence"  ) "* TODO Pyregence: %?")
-        ("P" "Peer Review" entry (file+headline "~/org/todo/agenda.org" "Peer Reviews" ) "* TODO PR: %?")
-        ("g" "GridFire"    entry (file+headline "~/org/todo/agenda.org" "GridFire"   ) "* TODO GridFire: %?")
-        ("y" "GeoSync"     entry (file+headline "~/org/todo/agenda.org" "GeoSync"    ) "* TODO Geosync: %?")
-        ("d" "DevDocs"     entry (file+headline "~/org/todo/agenda.org" "DevDocs"    ) "* TODO DevDocs: %?")
-        ("G" "GridFire-UI" entry (file+headline "~/org/todo/agenda.org" "GridFire-UI") "* TODO GridFire-UI: %?")
+      '(
         ("E" "Emacs"       entry (file+headline "~/org/tech-journal.org" "Emacs/Spacemacs") "* %?")
-        ("A" "Sysadmin"    entry (file+headline "~/org/todo/agenda.org" "Sysadmin"   ) "* TODO Sysadmin: %?")
-        ("j" "Journal entry" plain (function org-journal-find-location)
-         "** %(format-time-string org-journal-time-format)%^{Title}\n%i%?" :jump-to-captured t :immediate-finish t)
-        ("M" "Misc"        entry (file+headline "~/org/todo/agenda.org" "Misc"       ) "* TODO Misc: %?")))
+        ("G" "GridFire-UI" entry (file+headline "~/org/todo/agenda.org" "GridFire-UI") "* TODO GridFire-UI: %?")
+        ("M" "Misc"        entry (file+headline "~/org/todo/agenda.org" "Misc"       ) "* TODO Misc: %?")
+        ("P" "Peer Review" entry (file+headline "~/org/todo/agenda.org" "Peer Reviews" ) "* TODO PR: %?")
+        ("S" "Sysadmin"    entry (file+headline "~/org/todo/agenda.org" "Sysadmin"   ) "* TODO Sysadmin: %?")
+        ("a" "AWE"         entry (file+headline "~/org/todo/agenda.org" "AWE"        ) "* TODO AWE: %?")
+        ("b" "Behave"      entry (file+headline "~/org/todo/agenda.org" "Behave"     ) "* TODO Behave: %?")
+        ("d" "DevDocs"     entry (file+headline "~/org/todo/agenda.org" "DevDocs"    ) "* TODO DevDocs: %?")
+        ("e" "Events"      entry (file+headline "~/org/todo/agenda.org" "Events"     ) "* TODO Events: %?")
+        ("g" "GridFire"    entry (file+headline "~/org/todo/agenda.org" "GridFire"   ) "* TODO GridFire: %?")
+        ("j" "Journal entry" plain (function org-journal-find-location) "** %(format-time-string org-journal-time-format)%^{Title}\n%i%?" :jump-to-captured t :immediate-finish t)
+        ("m" "Comm/Plan"   entry (file+headline "~/org/todo/agenda.org" "Comm/Plan"  ) "* TODO Comm/Plan: %?")
+        ("p" "Pyregence"   entry (file+headline "~/org/todo/agenda.org" "Pyregence"  ) "* TODO Pyregence: %?")
+        ("s" "SIG"         entry (file+headline "~/org/todo/agenda.org" "SIG"        ) "* TODO SIG: %?")
+        ("y" "GeoSync"     entry (file+headline "~/org/todo/agenda.org" "GeoSync"    ) "* TODO Geosync: %?")
+        ))
 
 ;; ("j" "Clojure"     entry (file+headline "~/org/todo/agenda.org" "Clojure"    ) "* TODO %?")
 

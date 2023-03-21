@@ -10,6 +10,9 @@
 ;; Interact with Github and Gitlab
 (setq forge-topic-list-limit '(200 . -5))
 
+;; update forge with self hosted gitlab from SIG
+(add-to-list 'forge-alist '("gitlab.sig-gis.com" "gitlab.sig-gis.com/api/v4" "gitlab.sig-gis.com" forge-gitlab-repository))
+
 ;; show only two buffers when ediffing
 (setq magit-ediff-dwim-show-on-hunks t)
 
