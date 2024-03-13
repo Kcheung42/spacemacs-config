@@ -107,12 +107,14 @@
      (shell      . t)
      (scheme     . t)
      (sql        . t)
-     ))
+     (C          . t)))
+
   (setq org-src-window-setup         'current-window
         org-src-fontify-natively     t
         org-confirm-babel-evaluate   nil
         org-src-fontify-natively     t
-        org-src-preserve-indentation t))
+        org-src-preserve-indentation t
+        org-babel-C++-compiler       "/home/linuxbrew/.linuxbrew/bin/clang++ -std=c++20"))
 
 ;; Pull in the htmlize library for pretty source code in HTML output
 (require 'htmlize)
@@ -321,6 +323,12 @@
 
 
 ;; mermaid flow chart setup
-(setq ob-mermaid-cli-path "/home/kcheung/mermaid.cli/node_modules/.bin/mmdc")
+(setq ob-mermaid-cli-path "/home/kcheung/mermaid.cli/node_modules/.bin/")
+
+(setq org-list-allow-alphabetical t)
+
+(setq org-edit-src-auto-save-idle-delay 1)
+
+(setq org-edit-src-auto-save-idle-delay t)
 
 (provide 'my-org)
