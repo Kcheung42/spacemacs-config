@@ -327,8 +327,9 @@
 
 (setq org-list-allow-alphabetical t)
 
+(setq org-edit-src-turn-on-auto-save t)
+
 (setq org-edit-src-auto-save-idle-delay 1)
 
-(setq org-edit-src-auto-save-idle-delay t)
 
 (provide 'my-org)
