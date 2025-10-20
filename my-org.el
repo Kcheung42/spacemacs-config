@@ -1,5 +1,4 @@
 ;; Load org-mode
-(require 'org-install)
 (require 'org-agenda)
 
 ;; Turn on org-mode w/ font-lock for .org and .txt files
